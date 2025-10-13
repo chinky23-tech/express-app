@@ -1,15 +1,11 @@
-// import express
 const express = require('express');
+const path = require('path');
 
-//create an app
 const app = express();
 
-//define a route
-app.get('/' , (req ,res) => {
-res.send('Hello world from express');
-});
+// Serve static files from "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-//start server
-app.listen(3000, () => {
-console.log('Server running at http://localhost:3000');
+app.listen(3030, () => {
+  console.log('✅ Server running at http://localhost:3030');
 });
