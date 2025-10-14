@@ -6,18 +6,29 @@ const app = express();
 // Serve static files from "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//add  custom route for about page
-app.get('/about' ,(req , res) => {
-res.sendFile(path.join(__dirname, 'public' , 'about.html'));
+// Route for home page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/api/info' , (req,res) => {
-res.json({
-    name: "My Express App",
-    version: "1.0.0",
-    message: "Hello from JSON route!"
+// Route for about page
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'about.html'));
 });
+
+// API route
+app.get('/api/info', (req, res) => {
+    res.json({
+        name: "My Express App",
+        version: "1.0.0",
+        message: "Hello from JSON route!"
+    });
 });
-app.listen(5050, () => {
-  console.log('✅ Server running at http://localhost:5050');
+
+const PORT = 8000;
+app.listen(PORT, () => {
+    console.log('✅ Server running at http://localhost:8000');
+    console.log('📄 Home page: http://localhost:8000/');
+    console.log('📄 About page: http://localhost:8000/about');
+    console.log('🔗 API endpoint: http://localhost:8000/api/info');
 });
