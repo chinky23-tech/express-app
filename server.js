@@ -15,7 +15,10 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'about.html'));
 });
-
+// Route for style.css page
+app.get('/style', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'style.css'));
+});
 // API route
 app.get('/api/info', (req, res) => {
     res.json({
